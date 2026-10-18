@@ -1,0 +1,401 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Inscríbete al Secret Santa de la familia, deja tu lista de deseos y descubre a quién le regalas.">
+<meta property="og:title" content="🎄 Secret Santa en familia 2026">
+<meta property="og:description" content="Inscríbete, deja tu lista de deseos y descubre a quién le regalas.">
+<meta property="og:image" content="https://vemendez.github.io/secret-santa/photos/foto5.jpg">
+<meta property="og:url" content="https://vemendez.github.io/secret-santa/">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0f2a1f">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8E%81%3C/text%3E%3C/svg%3E">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Secret Santa 2026</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Figtree:wght@400;500;600;700&family=Caveat:wght@500;700&display=swap">
+<style>
+/* Layout: Nochebuena. String of lights, a pile of family polaroids as the hero, cream paper cards on deep pine. One committed festive look. */
+:root{
+  color-scheme:dark;
+  --pine:#0f2a1f; --pine-3:#1f4b38;
+  --snow:#f7efdf; --snow-muted:#bccbb9;
+  --paper:#fbf6ec; --paper-2:#f2e8d4; --ink:#2b1d14; --ink-muted:#6e5d4b; --rule:#e3d5bb;
+  --red:#b8202f; --red-deep:#8d1521; --gold:#dcae52; --gold-deep:#a97c22; --holly:#2e6b4a;
+  --kraft:#dcc196; --kraft-ink:#3a2a12; --kraft-line:#ad8c58;
+  --display:"Yeseva One", Georgia, "Times New Roman", serif;
+  --body:"Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --hand:"Caveat", "Comic Sans MS", cursive;
+}
+html{background:var(--pine)}
+body{background:var(--pine) radial-gradient(1200px 600px at 50% -200px,var(--pine-3),transparent 70%) no-repeat;color:var(--snow);font:16px/1.5 var(--body)}
+*{box-sizing:border-box}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--pine)}
+
+.lights{position:relative;height:46px;overflow:hidden}
+.lights svg{position:absolute;left:0;top:0;width:100%;height:46px}
+.lights .bulbs{position:absolute;inset:0;display:flex;justify-content:space-around;pointer-events:none;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.bulb{width:11px;height:17px;border-radius:50% 50% 45% 45%;margin-top:16px;position:relative;animation:twinkle 2.6s ease-in-out infinite}
+.bulb::before{content:"";position:absolute;top:-5px;left:3px;width:5px;height:6px;background:#3b3b30;border-radius:1px}
+.bulb:nth-child(4n+1){background:var(--red);box-shadow:0 0 10px 2px var(--red)}
+.bulb:nth-child(4n+2){background:var(--gold);box-shadow:0 0 10px 2px var(--gold);animation-delay:.6s}
+.bulb:nth-child(4n+3){background:#3fae6f;box-shadow:0 0 10px 2px #3fae6f;animation-delay:1.2s}
+.bulb:nth-child(4n){background:#6fb6e8;box-shadow:0 0 10px 2px #6fb6e8;animation-delay:1.8s}
+.bulb:nth-child(odd){margin-top:20px}
+@keyframes twinkle{0%,100%{opacity:1}50%{opacity:.45}}
+
+.wrap{max-width:720px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:10px 80px;display:flex;flex-direction:column;gap:44px}
+.hero{display:flex;flex-direction:column;gap:22px}
+.eyebrow{font-weight:700;text-transform:uppercase;letter-spacing:.16em;font-size:.75rem;color:var(--gold)}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(2.5rem,10vw,4.2rem);line-height:.98;margin:0;text-wrap:balance}
+h1 em{font-style:normal;color:var(--gold)}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(1.6rem,6vw,2rem);line-height:1.1;margin:0;text-wrap:balance}
+h3{font-size:1.05rem;font-weight:700;margin:0}
+p{margin:0}
+.lede{color:var(--snow-muted);max-width:56ch;font-size:1.05rem}
+.small{font-size:.9rem}
+.sec{display:flex;flex-direction:column;gap:16px;min-width:0}
+.sec-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.sec-head .count,.sub{color:var(--snow-muted);font-size:.92rem}
+
+.collage{position:relative;height:clamp(250px,62vw,380px);margin:4px 0 6px}
+.pol{position:absolute;background:#fffdf8;padding:8px 8px 34px;box-shadow:0 14px 30px rgba(0,0,0,.45);border:0;cursor:zoom-in;transition:transform .35s ease}
+.pol img{display:block;width:100%;height:100%;object-fit:cover}
+.pol span{position:absolute;left:0;right:0;bottom:6px;text-align:center;font:700 1.15rem/1 var(--hand);color:#3b2e22}
+.pol.a{width:54%;height:78%;left:0;top:8%;transform:rotate(-6deg);z-index:1}
+.pol.b{width:50%;height:70%;right:0;top:0;transform:rotate(5deg);z-index:2}
+.pol.c{width:44%;height:66%;left:29%;bottom:0;transform:rotate(-1.5deg);z-index:3}
+.pol:hover,.pol:focus-visible{transform:rotate(0) scale(1.03);z-index:5}
+.pol.c::after{content:"";position:absolute;top:-12px;left:50%;width:70px;height:22px;margin-left:-35px;background:rgba(220,174,82,.75);transform:rotate(-3deg)}
+
+.stats{display:flex;flex-wrap:wrap;gap:8px}
+.stat{border:1px solid rgba(220,174,82,.5);border-radius:999px;padding:6px 13px;font-size:.88rem;color:var(--snow);font-variant-numeric:tabular-nums;background:rgba(15,42,31,.6)}
+.stat b{color:var(--gold);font-weight:700}
+.stat.hot{background:var(--red);border-color:var(--red)}
+.stat.hot b{color:#fff}
+
+.card{background:var(--paper);color:var(--ink);border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:16px;min-width:0;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.card .muted{color:var(--ink-muted)}
+
+/* invite card with ribbon */
+.invite{position:relative;overflow:hidden;padding-top:30px}
+.invite::before{content:"";position:absolute;top:0;bottom:0;right:28px;width:16px;background:var(--red)}
+.invite::after{content:"";position:absolute;right:12px;top:-14px;width:48px;height:48px;border-radius:50% 50% 50% 0;background:var(--red-deep);transform:rotate(-45deg)}
+.invite > *{position:relative;z-index:1;margin-right:40px}
+.invite h2{color:var(--red-deep)}
+.how{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;counter-reset:s}
+.how li{display:flex;gap:12px;align-items:flex-start;counter-increment:s}
+.how li::before{content:counter(s);flex:none;width:28px;height:28px;border-radius:50%;background:var(--holly);color:#fff;font-weight:700;display:grid;place-items:center;font-size:.9rem}
+
+.tag{position:relative;background:var(--kraft);color:var(--kraft-ink);padding:22px 22px 22px 60px;
+  clip-path:polygon(32px 0,100% 0,100% 100%,32px 100%,0 calc(100% - 32px),0 32px);display:flex;flex-direction:column;gap:12px;min-width:0}
+.tag::before{content:"";position:absolute;left:17px;top:50%;width:16px;height:16px;margin-top:-8px;border-radius:50%;background:var(--pine);box-shadow:inset 0 0 0 2px var(--kraft-line)}
+.tagline{display:flex;align-items:baseline;gap:12px;border-bottom:1.5px dashed var(--kraft-line);padding-bottom:4px;min-width:0}
+.tagline .lbl{flex:none;width:2.6em;font-weight:700;text-transform:uppercase;letter-spacing:.12em;font-size:.72rem}
+.tagline .who{font-family:var(--hand);font-weight:700;font-size:clamp(2rem,8vw,2.8rem);line-height:1;overflow-wrap:anywhere}
+.tagline .who.sm{font-size:1.5rem}
+.tag.swing{animation:swing 1.2s ease-out 1;transform-origin:22px 50%}
+@keyframes swing{0%{transform:rotate(-6deg)}40%{transform:rotate(3deg)}70%{transform:rotate(-1deg)}100%{transform:rotate(0)}}
+.tag.blank{background:transparent;color:var(--snow-muted);clip-path:none;outline:2px dashed rgba(220,174,82,.55);outline-offset:-2px;border-radius:6px 16px 16px 6px}
+.tag.blank::before{box-shadow:inset 0 0 0 2px rgba(220,174,82,.55)}
+.tag.blank .tagline{border-color:rgba(220,174,82,.4)}
+.tag.blank .who{color:var(--snow)}
+.stack{display:flex;flex-direction:column;gap:14px}
+
+.wish{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.wish li{display:flex;gap:10px;align-items:flex-start;min-width:0}
+.wish li::before{content:"";flex:none;width:9px;height:9px;margin-top:8px;background:var(--red);transform:rotate(45deg)}
+.wish .wt{min-width:0;overflow-wrap:anywhere}
+.wish a,.vlink{color:var(--holly);font-weight:600;text-decoration:underline;text-underline-offset:2px;overflow-wrap:anywhere}
+.amz{display:inline-block;margin-left:6px;font-size:.72rem;font-weight:700;padding:1px 8px;border-radius:999px;background:#232f3e;color:#ffb84d;vertical-align:1px}
+
+form{margin:0}
+label.f{font-weight:600;font-size:.92rem;display:flex;flex-direction:column;gap:6px}
+input[type=text],input[type=password]{width:100%;font:inherit;font-size:16px;color:var(--ink);background:#fff;border:1px solid var(--rule);border-radius:10px;padding:11px 12px;color-scheme:light}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.btn{font:700 1rem var(--body);border:0;border-radius:999px;padding:13px 22px;background:var(--red);color:#fff;cursor:pointer;display:inline-flex;align-items:center;gap:8px;text-decoration:none}
+.btn:hover{background:var(--red-deep)}
+.btn.ghostlight{background:transparent;color:var(--ink);border:1.5px solid var(--rule)}
+.btn.ghostlight:hover{border-color:var(--gold-deep);background:transparent}
+.btn.big{font-size:1.1rem;padding:15px 28px}
+.btn[aria-disabled="true"]{opacity:.55;pointer-events:none}
+.btn:focus-visible,input:focus-visible,summary:focus-visible,.pol:focus-visible,.gal button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.status{font-size:.9rem;color:var(--ink-muted)} .status.err{color:var(--red);font-weight:600}
+
+.people{display:flex;flex-direction:column;gap:10px}
+details.person{background:var(--paper);color:var(--ink);border-radius:14px}
+details.person summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;padding:12px 14px}
+details.person summary::-webkit-details-marker{display:none}
+details.person[open] summary{border-bottom:1px solid var(--rule)}
+.disc{flex:none;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;color:#fff;font-family:var(--display);font-size:1.15rem}
+.pname{font-weight:700;overflow-wrap:anywhere}
+.pmeta{font-size:.8rem;color:var(--ink-muted)}
+.chips{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.chip{font-size:.74rem;font-weight:600;border:1px solid var(--rule);border-radius:999px;padding:2px 9px;white-space:nowrap;color:var(--ink-muted)}
+.pbody{padding:14px;display:flex;flex-direction:column;gap:12px}
+.empty{color:var(--snow-muted);border:1.5px dashed rgba(220,174,82,.45);border-radius:14px;padding:18px}
+
+.gal{columns:3 200px;column-gap:12px}
+.gal button{display:block;width:100%;border:0;padding:0;margin:0 0 12px;background:none;cursor:zoom-in;break-inside:avoid;border-radius:10px;overflow:hidden}
+.gal img{display:block;width:100%;height:auto;transition:transform .4s ease}
+.gal button:hover img{transform:scale(1.04)}
+.lb{position:fixed;inset:0;z-index:50;background:rgba(5,15,10,.92);display:grid;place-items:center;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));cursor:zoom-out}
+.lb[hidden]{display:none}
+.lb img{max-width:100%;max-height:100%;border:8px solid #fffdf8;border-bottom-width:30px;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.wrows{display:flex;flex-direction:column;gap:10px}
+.wrow{display:grid;grid-template-columns:1fr 1fr auto;gap:8px;align-items:center;background:var(--paper-2);border-radius:12px;padding:8px}
+.wrow .x{border:0;background:transparent;color:var(--ink-muted);font-size:1.3rem;line-height:1;width:36px;height:36px;border-radius:50%;cursor:pointer}
+.wrow .x:hover{background:var(--rule);color:var(--red)}
+@media (max-width:520px){.wrow{grid-template-columns:1fr auto}.wrow input:nth-child(2){grid-column:1/2;grid-row:2}.wrow .x{grid-row:1/3;grid-column:2}}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:520px){.grid2{grid-template-columns:1fr}}
+textarea,input[type=email],input[type=url]{width:100%;font:inherit;font-size:16px;color:var(--ink);background:#fff;border:1px solid var(--rule);border-radius:10px;padding:11px 12px;color-scheme:light}
+textarea{resize:vertical;min-height:70px}
+.hint{font-weight:400;color:var(--ink-muted);font-size:.84rem}
+.btn.ghostlight.sm{padding:9px 16px;font-size:.92rem}
+footer{text-align:center;color:var(--snow-muted);font:700 1.4rem var(--hand)}
+@media (prefers-reduced-motion:reduce){.bulb,.tag.swing{animation:none}.pol,.gal img{transition:none}}
+</style>
+</head><body>
+
+<div class="lights" aria-hidden="true">
+  <svg viewBox="0 0 100 46" preserveAspectRatio="none"><path d="M0 10 Q 12.5 34 25 14 T 50 14 T 75 14 T 100 10" fill="none" stroke="#2c2c22" stroke-width="1" vector-effect="non-scaling-stroke"/></svg>
+  <div class="bulbs" id="bulbs"></div>
+</div>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="collage">
+      <button class="pol a" type="button"><img src="photos/foto5.jpg" alt="La familia con los brazos arriba en pijamas navideñas"><span>¡Feliz Navidad!</span></button>
+      <button class="pol b" type="button"><img src="photos/foto3.jpg" alt="La familia frente al árbol rojo y dorado"><span>Nochebuena</span></button>
+      <button class="pol c" type="button"><img src="photos/foto1.jpg" alt="La familia en pijamas junto al árbol"><span>Pijamada</span></button>
+    </div>
+    <div class="eyebrow" id="eyebrow"></div>
+    <h1>Secret Santa <em>en familia</em></h1>
+    <p class="lede">Inscríbete, deja tu lista de deseos y espera a que saquemos los nombres. Nadie sabe quién le regala a quién hasta el gran día.</p>
+    <div class="stats" id="stats"></div>
+  </header>
+
+  <section class="card invite" id="inviteSec">
+    <h2 id="inviteTitle">Inscríbete</h2>
+    <ol class="how">
+      <li><span>Llena el formulario con tu nombre, tu correo, tu lista de deseos (puedes pegar links de Amazon) y una <b>clave secreta</b> que tú inventas.</span></li>
+      <li><span>Cuando estemos todos, se sacan los nombres.</span></li>
+      <li><span>Vuelve a esta página, pon tu clave y descubre a quién le regalas.</span></li>
+    </ol>
+    <div class="row"><a class="btn big" id="formBtn" href="#" target="_blank" rel="noopener">Inscribirme</a><a class="btn ghostlight" id="editBtn" href="#" target="_blank" rel="noopener">Cambiar mi lista</a></div>
+    <p class="muted small" id="formNote">No necesitas cuenta. Se abre un formulario de Google.</p>
+    <p class="muted small" id="editNote">¿Quieres cambiar tu lista de deseos? Toca <b>Cambiar mi lista</b> y llena el formulario otra vez con el <b>mismo correo</b>. Puedes hacerlo cuantas veces quieras, hasta después del sorteo. Siempre se usa tu respuesta más reciente.</p>
+  </section>
+
+  <section class="sec" id="tagSec">
+    <h2>Tu papelito</h2>
+    <div id="tagBody" class="stack"></div>
+  </section>
+
+  <section class="sec" id="listSec">
+    <h2>Mi lista de deseos</h2>
+    <p class="sub">Arma tu lista aquí, con links de Amazon si quieres. Al final se abre el formulario ya lleno: solo pones tu clave y tocas Enviar. Puedes volver a cambiarla cuando quieras.</p>
+    <form id="listForm" class="card">
+      <div class="grid2">
+        <label class="f" for="lEmail">Tu correo <span class="hint">El mismo con el que te inscribiste</span><input type="email" id="lEmail" autocomplete="email" required placeholder="tucorreo@gmail.com"></label>
+        <label class="f" for="lName">Tu nombre<input type="text" id="lName" maxlength="40" autocomplete="name" required></label>
+      </div>
+      <label class="f" for="lHouse">Tu casa <span class="hint">Los de la misma casa no se sacan entre sí</span><input type="text" id="lHouse" maxlength="40" placeholder="Ej. Los Méndez"></label>
+      <div class="f" style="gap:8px">
+        <span>Lo que te gustaría <span class="hint">Escribe la idea, pega el link, o las dos cosas</span></span>
+        <div id="wishRows" class="wrows"></div>
+        <div><button type="button" class="btn ghostlight sm" id="addWish">+ Agregar otro deseo</button></div>
+      </div>
+      <label class="f" for="lNotes">Notas para tu Santa <span class="hint">Tallas, colores, alergias</span><textarea id="lNotes" rows="2" maxlength="600"></textarea></label>
+      <label class="f" for="lVideo">Link a tu video saludo <span class="hint">Opcional. Súbelo a Google Drive o YouTube y pega el link</span><input type="url" id="lVideo" maxlength="600" placeholder="https://"></label>
+      <div class="row"><a class="btn" id="sendList" href="#" target="_blank" rel="noopener">Enviar mi lista</a><span id="lStatus" class="status" role="status"></span></div>
+      <p class="muted small">En el formulario pon <b>la misma clave secreta</b> de siempre y toca Enviar. Tu lista nueva aparece en la página en la próxima actualización.</p>
+    </form>
+  </section>
+
+  <section class="sec">
+    <div class="sec-head"><h2>Quiénes están</h2><span id="familyCount" class="count"></span></div>
+    <p class="sub" id="updNote"></p>
+    <div id="familyList" class="people"></div>
+  </section>
+
+  <section class="sec">
+    <h2>Nuestras Navidades</h2>
+    <div class="gal" id="gal"></div>
+  </section>
+
+  <footer>¡Feliz Navidad, familia!</footer>
+</div>
+
+<div id="lb" class="lb" hidden role="dialog" aria-label="Foto"><img id="lbImg" alt=""></div>
+
+<script>
+const CFG=/*__DATA__*/{"updated": "2026-10-18T22:46:34.354423+00:00", "group": "Mendez", "date": "2026-12-25", "budget": "150", "form": "https://forms.gle/2Ej8vCUDvu9h21be6", "people": [], "tags": null, "salt": "", "prefill": {"base": "https://docs.google.com/forms/d/e/1FAIpQLSf-bTlNv3IenLaGoh471e4qItePI0WFHfxTm4EOBNYrx2jyAA/viewform", "entries": {"name": "entry.2140686805", "email": "entry.2032132945", "house": "entry.1879657790", "wishes": "entry.2005252632", "notes": "entry.606798327", "video": "entry.972743061"}}}/*__END__*/;
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const PHOTOS=[['foto1','La familia en pijamas junto al árbol'],['foto5','Todos con los brazos arriba'],['foto3','Frente al árbol rojo y dorado'],['foto2','Foto de familia en la sala'],['foto4','Con diademas y lentes navideños'],['foto6','En pijamas de duende y Santa']];
+const DISC=['#b8202f','#2e6b4a','#a97c22','#8d1521','#1f4b38','#7a4a1e'];
+const people=CFG.people||[];
+
+(()=>{const n=Math.max(8,Math.min(22,Math.round(innerWidth/48)));$('#bulbs').innerHTML='<span class="bulb"></span>'.repeat(n)})();
+$('#gal').innerHTML=PHOTOS.map(([f,a])=>`<button type="button" data-src="photos/${f}.jpg"><img src="photos/${f}.jpg" alt="${esc(a)}" loading="lazy"></button>`).join('');
+document.addEventListener('click',e=>{
+  const g=e.target.closest('.gal button,.pol');
+  if(g){const im=g.querySelector('img');$('#lbImg').src=im.src;$('#lbImg').alt=im.alt;$('#lb').hidden=false;return}
+  if(e.target.closest('#lb'))$('#lb').hidden=true;
+});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')$('#lb').hidden=true});
+
+function safeUrl(u){try{const x=new URL(u);return /^https?:$/.test(x.protocol)?x.href:''}catch(e){return ''}}
+const host=u=>{try{return new URL(u).hostname.replace(/^www\./,'')}catch(e){return ''}};
+const isAmazon=u=>/(^|\.)(amazon\.[a-z.]+|amzn\.[a-z]+|a\.co)$/i.test(host(u));
+function wishHTML(p){
+  const items=p.wishes||[];
+  if(!items.length)return '<p class="muted small">No dejó lista de deseos.</p>';
+  return '<ul class="wish">'+items.map(({t,u})=>{
+    const href=safeUrl(u||'');
+    if(href){const amz=isAmazon(href);const label=t||(amz?'Ver en Amazon':host(href));
+      return `<li><span class="wt"><a href="${esc(href)}" target="_blank" rel="noopener">${esc(label)}</a>${amz?'<span class="amz">amazon</span>':''}</span></li>`}
+    return `<li><span class="wt">${esc(t)}</span></li>`}).join('')+'</ul>';
+}
+function extras(p){
+  const v=safeUrl(p.video||'');
+  return (p.notes?`<p class="small"><b>Notas:</b> ${esc(p.notes)}</p>`:'')+(v?`<p class="small">🎥 <a class="vlink" href="${esc(v)}" target="_blank" rel="noopener">Ver su video saludo</a></p>`:'');
+}
+function fmtDate(d){try{return new Date(d+'T12:00:00').toLocaleDateString('es-DO',{weekday:'long',day:'numeric',month:'long'})}catch(e){return d}}
+function daysTo(d){const t=new Date(d+'T00:00:00');const n=new Date();n.setHours(0,0,0,0);return Math.round((t-n)/864e5)}
+
+/* hero + stats */
+$('#eyebrow').textContent='Navidad 2026 · '+(CFG.group?'Familia '+CFG.group:'Intercambio familiar');
+(()=>{const parts=[];
+  if(CFG.date){const d=daysTo(CFG.date);
+    parts.push(`<span class="stat hot">${d>1?`Faltan <b>${d}</b> días`:d===1?'<b>¡Es mañana!</b>':d===0?'<b>¡Es hoy!</b>':'¡Feliz Navidad!'}</span>`);
+    parts.push(`<span class="stat">Intercambio: <b>${esc(fmtDate(CFG.date))}</b></span>`)}
+  if(CFG.budget)parts.push(`<span class="stat">Presupuesto <b>${esc(CFG.budget)}</b></span>`);
+  parts.push(`<span class="stat"><b>${people.length}</b> ${people.length===1?'inscrito':'inscritos'}</span>`);
+  parts.push(`<span class="stat">${CFG.tags?'🎁 Nombres sacados':'Nombres sin sacar'}</span>`);
+  $('#stats').innerHTML=parts.join('');})();
+
+/* invite */
+(()=>{const b=$('#formBtn'),u=safeUrl(CFG.form||'');
+  if(CFG.tags){$('#inviteTitle').textContent='¡Ya se sacaron los nombres!';b.textContent='Ver mi papelito';b.href='#tagSec';b.removeAttribute('target');
+    $('#formNote').textContent='Si se te olvidó tu clave, pídesela al organizador.'}
+  const e=$('#editBtn');
+  if(u){if(!CFG.tags)b.href=u;e.href=u}else{b.setAttribute('aria-disabled','true');b.textContent='El formulario abre muy pronto';$('#formNote').textContent='Vuelve en un ratito.';e.hidden=true;$('#editNote').hidden=true}})();
+
+/* family */
+if(CFG.updated)$('#updNote').textContent='Listas actualizadas el '+new Date(CFG.updated).toLocaleDateString('es-DO',{day:'numeric',month:'long'})+'. Los cambios que hagas en el formulario aparecen aquí en la próxima actualización.';
+$('#familyCount').textContent=people.length?`${people.length} ${people.length===1?'inscrito':'inscritos'}`:'';
+$('#familyList').innerHTML=people.length?people.map((p,i)=>`<details class="person"><summary>
+  <span class="disc" style="background:${DISC[i%DISC.length]}" aria-hidden="true">${esc((p.name||'?').trim().charAt(0).toUpperCase())}</span>
+  <span style="min-width:0"><span class="pname">${esc(p.name)}</span>${p.house?`<br><span class="pmeta">${esc(p.house)}</span>`:''}</span>
+  <span class="chips">${p.video?'<span class="chip">🎥 video</span>':''}<span class="chip">${(p.wishes||[]).length} ${(p.wishes||[]).length===1?'deseo':'deseos'}</span></span>
+  </summary><div class="pbody">${wishHTML(p)}${extras(p)}</div></details>`).join('')
+  :'<p class="empty">Todavía no hay nadie en la lista. ¡Sé el primero en inscribirte!</p>';
+
+/* papelito */
+function blank(to,body){return `<div class="tag blank"><div class="tagline"><span class="lbl">Para</span><span class="who sm">${to}</span></div><div class="tagline"><span class="lbl">De</span><span class="who sm">Ti</span></div><p class="small">${body}</p></div>`}
+const norm=s=>s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().replace(/[^a-z0-9]/g,'');
+const enc=new TextEncoder();
+const hex=b=>[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('');
+const unb64=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
+async function openTag(clave){
+  const k=norm(clave);if(!k)return null;
+  const id=hex(await crypto.subtle.digest('SHA-256',enc.encode(CFG.salt+':id:'+k)));
+  const t=CFG.tags[id];if(!t)return null;
+  const base=await crypto.subtle.importKey('raw',enc.encode(k),'PBKDF2',false,['deriveKey']);
+  const key=await crypto.subtle.deriveKey({name:'PBKDF2',salt:enc.encode(CFG.salt+':key'),iterations:100000,hash:'SHA-256'},base,{name:'AES-GCM',length:256},false,['decrypt']);
+  const pt=await crypto.subtle.decrypt({name:'AES-GCM',iv:unb64(t.iv)},key,unb64(t.ct));
+  return JSON.parse(new TextDecoder().decode(pt));
+}
+function renderTagIdle(){
+  if(!CFG.tags){$('#tagBody').innerHTML=blank('Todavía no','Los nombres se sacan cuando estemos todos inscritos. Te avisamos por el chat de la familia.');return}
+  $('#tagBody').innerHTML=`<form id="keyForm" class="card">
+    <div><h3>Pon tu clave secreta</h3><p class="muted small">La misma que inventaste en el formulario. Solo tú ves tu papelito.</p></div>
+    <label class="f" for="clave">Clave<input type="password" id="clave" autocomplete="off" autocapitalize="off" required></label>
+    <div class="row"><button class="btn" type="submit">Ver mi papelito</button><span id="keyStatus" class="status" role="status"></span></div>
+  </form>`;
+  $('#keyForm').addEventListener('submit',async e=>{
+    e.preventDefault();const st=$('#keyStatus');st.className='status';st.textContent='Abriendo…';
+    try{const r=await openTag($('#clave').value);
+      if(!r){st.className='status err';st.textContent='Esa clave no aparece. Revísala (no importan mayúsculas ni acentos) o pídesela al organizador.';return}
+      showTag(r)}
+    catch(err){st.className='status err';st.textContent='Este navegador no pudo abrir el papelito. Prueba en Chrome o Safari actualizados.'}
+  });
+}
+function showTag(r){
+  const g=people.find(p=>p.id===r.to)||{name:'?'};
+  $('#tagBody').innerHTML=`<div class="tag swing">
+    <div class="tagline"><span class="lbl">Para</span><span class="who">${esc(g.name)}</span></div>
+    <div class="tagline"><span class="lbl">De</span><span class="who sm">${esc(r.from||'Ti')}, en secreto 🤫</span></div>
+  </div>
+  <div class="card"><h3>Lo que quiere ${esc(g.name)}</h3>${wishHTML(g)}${extras(g)}</div>
+  <div class="row"><button class="btn" type="button" id="hideTag" style="background:transparent;border:1.5px solid rgba(220,174,82,.6)">Esconder mi papelito</button></div>`;
+  $('#hideTag').addEventListener('click',renderTagIdle);
+}
+renderTagIdle();
+
+/* ---------- editor de lista ---------- */
+const PF=CFG.prefill||null;
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+function addRow(t='',u=''){
+  const row=document.createElement('div');row.className='wrow';
+  row.innerHTML='<input type="text" maxlength="120" placeholder="¿Qué te gustaría?" aria-label="Deseo"><input type="url" maxlength="600" placeholder="Link de Amazon (opcional)" aria-label="Link"><button type="button" class="x" aria-label="Quitar">×</button>';
+  row.children[0].value=t;row.children[1].value=u;$('#wishRows').appendChild(row);return row;
+}
+function setRows(l){$('#wishRows').innerHTML='';(l&&l.length?l:[{},{},{}]).forEach(w=>addRow(w.t||'',w.u||''))}
+function readRows(){return [...$('#wishRows').children].map(r=>{let t=r.children[0].value.trim(),u=r.children[1].value.trim();
+  const m=t.match(/https?:\/\/\S+/);if(m&&!u){u=m[0];t=t.replace(m[0],'').trim()}
+  if(u&&!/^https?:\/\//i.test(u))u='https://'+u;return {t,u:safeUrl(u)?u:''}}).filter(w=>w.t||w.u)}
+async function idFor(email){const h=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(email.trim().toLowerCase()));return [...new Uint8Array(h)].map(x=>x.toString(16).padStart(2,'0')).join('').slice(0,10)}
+async function loadFor(email){
+  if(!/\S+@\S+\.\S+/.test(email))return;
+  let p=null;try{const id=await idFor(email);p=people.find(x=>x.id===id)}catch(e){}
+  let local=null;try{local=JSON.parse(store.get('ss-list:'+email.trim().toLowerCase())||'null')}catch(e){}
+  const src=local&&(!p||local.at>(CFG.updated||''))?local:p;
+  if(!src)return;
+  if(!$('#lName').value)$('#lName').value=src.name||'';
+  if(!$('#lHouse').value)$('#lHouse').value=src.house||'';
+  const cur=readRows();if(!cur.length)setRows(src.wishes);
+  if(!$('#lNotes').value)$('#lNotes').value=src.notes||'';
+  if(!$('#lVideo').value)$('#lVideo').value=src.video||'';
+  setStatus('Cargamos tu lista. Cámbiala y vuelve a enviarla.');
+  refreshLink();
+}
+function setStatus(txt,err){const s=$('#lStatus');s.textContent=txt||'';s.className='status'+(err?' err':'')}
+function buildUrl(){
+  if(!PF)return '';
+  const email=$('#lEmail').value.trim(),name=$('#lName').value.trim();
+  const wishes=readRows().map(w=>w.t&&w.u?`${w.t} — ${w.u}`:(w.t||w.u)).join('\n');
+  const v={name,email,house:$('#lHouse').value.trim(),wishes,notes:$('#lNotes').value.trim(),video:$('#lVideo').value.trim()};
+  const q=new URLSearchParams();q.set('usp','pp_url');
+  for(const k in v)if(v[k]&&PF.entries[k])q.set(PF.entries[k],v[k]);
+  return PF.base+'?'+q.toString();
+}
+function refreshLink(){
+  const a=$('#sendList');
+  if(!PF){a.setAttribute('aria-disabled','true');a.textContent='Disponible muy pronto';return}
+  const ok=/\S+@\S+\.\S+/.test($('#lEmail').value)&&$('#lName').value.trim();
+  if(ok){a.removeAttribute('aria-disabled');a.href=buildUrl()}else{a.setAttribute('aria-disabled','true');a.href='#'}
+}
+setRows([]);
+$('#addWish').addEventListener('click',()=>{addRow().children[0].focus();refreshLink()});
+$('#wishRows').addEventListener('click',e=>{if(e.target.classList.contains('x')){e.target.parentElement.remove();if(!$('#wishRows').children.length)addRow();refreshLink()}});
+$('#wishRows').addEventListener('paste',e=>{const inp=e.target;if(inp.type!=='text')return;const txt=((e.clipboardData&&e.clipboardData.getData('text'))||'').trim();
+  if(/^https?:\/\/\S+$/.test(txt)){e.preventDefault();inp.nextElementSibling.value=txt;if(!inp.value)inp.placeholder='Ponle un nombre (ej. Audífonos)';refreshLink()}});
+$('#listForm').addEventListener('input',refreshLink);
+$('#lEmail').addEventListener('change',e=>loadFor(e.target.value));
+$('#listForm').addEventListener('submit',e=>e.preventDefault());
+$('#sendList').addEventListener('click',e=>{
+  const a=e.currentTarget;
+  if(a.getAttribute('aria-disabled')==='true'){e.preventDefault();setStatus('Pon tu correo y tu nombre primero.',true);return}
+  a.href=buildUrl();
+  const email=$('#lEmail').value.trim().toLowerCase();
+  store.set('ss-list:'+email,JSON.stringify({name:$('#lName').value.trim(),house:$('#lHouse').value.trim(),wishes:readRows(),notes:$('#lNotes').value.trim(),video:$('#lVideo').value.trim(),at:new Date().toISOString()}));
+  store.set('ss-email',email);
+  setStatus('Se abrió el formulario. Pon tu clave y toca Enviar.');
+});
+(()=>{const e=store.get('ss-email');if(e){$('#lEmail').value=e;loadFor(e)}refreshLink()})();
+</script>
+
+</body></html>
