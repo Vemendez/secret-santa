@@ -255,12 +255,12 @@ footer{text-align:center;color:var(--snow-muted);font:700 1.4rem var(--hand)}
 <div id="lb" class="lb" hidden role="dialog" aria-label="Foto"><img id="lbImg" alt=""></div>
 
 <script>
-const CFG=/*__DATA__*/{"updated": "2026-10-22T12:51:23.355551+00:00", "group": "Mendez", "date": "2026-12-25", "budget": "", "options": ["RD$3,000", "RD$5,000", "RD$7,500", "RD$10,000"], "form": "https://forms.gle/2Ej8vCUDvu9h21be6", "people": [], "tags": null, "salt": "", "prefill": {"base": "https://docs.google.com/forms/d/e/1FAIpQLSf-bTlNv3IenLaGoh471e4qItePI0WFHfxTm4EOBNYrx2jyAA/viewform", "entries": {"name": "entry.2140686805", "email": "entry.2032132945", "house": "entry.1879657790", "wishes": "entry.2005252632", "notes": "entry.606798327", "vote": "entry.1879650429"}}, "votes": {}}/*__END__*/;
+const CFG=/*__DATA__*/{"updated": "2026-10-22T13:15:05.246450+00:00", "group": "Mendez", "date": "2026-12-25", "budget": "", "options": ["RD$3,000", "RD$5,000", "RD$7,500", "RD$10,000"], "form": "https://forms.gle/2Ej8vCUDvu9h21be6", "people": [], "live": "https://script.google.com/macros/s/AKfycbzQd1eUWK9PMsScEWdEMoPSKyYPbBoLg1gaC7at1aX0v1mtWmEmVtZQMh7JVdrfgFvk/exec", "tags": null, "salt": "", "prefill": {"base": "https://docs.google.com/forms/d/e/1FAIpQLSf-bTlNv3IenLaGoh471e4qItePI0WFHfxTm4EOBNYrx2jyAA/viewform", "entries": {"name": "entry.2140686805", "email": "entry.2032132945", "house": "entry.1879657790", "wishes": "entry.2005252632", "notes": "entry.606798327", "vote": "entry.1879650429"}}, "votes": {}}/*__END__*/;
 const $=s=>document.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const PHOTOS=[['foto1','La familia en pijamas junto al árbol'],['foto5','Todos con los brazos arriba'],['foto3','Frente al árbol rojo y dorado'],['foto2','Foto de familia en la sala'],['foto4','Con diademas y lentes navideños'],['foto6','En pijamas de duende y Santa']];
 const DISC=['#b8202f','#2e6b4a','#a97c22','#8d1521','#1f4b38','#7a4a1e'];
-const people=CFG.people||[];
+let people=CFG.people||[];
 
 (()=>{const n=Math.max(8,Math.min(22,Math.round(innerWidth/48)));$('#bulbs').innerHTML='<span class="bulb"></span>'.repeat(n)})();
 $('#gal').innerHTML=PHOTOS.map(([f,a])=>`<button type="button" data-src="photos/${f}.jpg"><img src="photos/${f}.jpg" alt="${esc(a)}" loading="lazy"></button>`).join('');
@@ -291,14 +291,15 @@ function daysTo(d){const t=new Date(d+'T00:00:00');const n=new Date();n.setHours
 
 /* hero + stats */
 $('#eyebrow').textContent='Navidad 2026 · '+(CFG.group?'Familia '+CFG.group:'Intercambio familiar');
-(()=>{const parts=[];
+function renderStats(){const parts=[];
   if(CFG.date){const d=daysTo(CFG.date);
     parts.push(`<span class="stat hot">${d>1?`Faltan <b>${d}</b> días`:d===1?'<b>¡Es mañana!</b>':d===0?'<b>¡Es hoy!</b>':'¡Feliz Navidad!'}</span>`);
     parts.push(`<span class="stat">Intercambio: <b>${esc(fmtDate(CFG.date))}</b></span>`)}
   parts.push(CFG.budget?`<span class="stat">Presupuesto <b>${esc(CFG.budget)}</b></span>`:`<span class="stat">Presupuesto: <b>en votación</b></span>`);
   parts.push(`<span class="stat"><b>${people.length}</b> ${people.length===1?'inscrito':'inscritos'}</span>`);
   parts.push(`<span class="stat">${CFG.tags?'🎁 Nombres sacados':'Nombres sin sacar'}</span>`);
-  $('#stats').innerHTML=parts.join('');})();
+  $('#stats').innerHTML=parts.join('');}
+renderStats();
 
 /* invite */
 (()=>{const b=$('#formBtn');
@@ -308,14 +309,15 @@ $('#eyebrow').textContent='Navidad 2026 · '+(CFG.group?'Familia '+CFG.group:'In
   if(!CFG.prefill){b.setAttribute('aria-disabled','true');b.textContent='Las inscripciones abren muy pronto'}})();
 
 /* family */
-if(CFG.updated)$('#updNote').textContent='Listas actualizadas el '+new Date(CFG.updated).toLocaleDateString('es-DO',{day:'numeric',month:'long'})+'. Las inscripciones y cambios nuevos aparecen aquí en la próxima actualización.';
+function renderFamily(){
 $('#familyCount').textContent=people.length?`${people.length} ${people.length===1?'inscrito':'inscritos'}`:'';
 $('#familyList').innerHTML=people.length?people.map((p,i)=>`<details class="person"><summary>
   <span class="disc" style="background:${DISC[i%DISC.length]}" aria-hidden="true">${esc((p.name||'?').trim().charAt(0).toUpperCase())}</span>
   <span style="min-width:0"><span class="pname">${esc(p.name)}</span>${p.house?`<br><span class="pmeta">${esc(p.house)}</span>`:''}</span>
   <span class="chips"><span class="chip">${(p.wishes||[]).length} ${(p.wishes||[]).length===1?'deseo':'deseos'}</span></span>
   </summary><div class="pbody">${wishHTML(p)}${extras(p)}</div></details>`).join('')
-  :'<p class="empty">Todavía no hay nadie en la lista. ¡Sé el primero en inscribirte!</p>';
+  :'<p class="empty">Todavía no hay nadie en la lista. ¡Sé el primero en inscribirte!</p>';}
+renderFamily();
 
 /* papelito */
 function blank(to,body){return `<div class="tag blank"><div class="tagline"><span class="lbl">Para</span><span class="who sm">${to}</span></div><div class="tagline"><span class="lbl">De</span><span class="who sm">Ti</span></div><p class="small">${body}</p></div>`}
@@ -370,12 +372,13 @@ const OPTS=CFG.options||['RD$3,000','RD$5,000','RD$7,500','RD$10,000'];
 $('#lVote').innerHTML=OPTS.map((o,i)=>`<label for="lVote${i}"><input type="radio" name="lVote" id="lVote${i}" value="${esc(o)}">${esc(o)}</label>`).join('');
 function voteVal(){const r=document.querySelector('input[name="lVote"]:checked');return r?r.value:''}
 function setVote(v){const r=[...document.querySelectorAll('input[name="lVote"]')].find(x=>x.value===v);if(r)r.checked=true}
-(()=>{const V=CFG.votes||{};const total=OPTS.reduce((s,o)=>s+(V[o]||0),0);const max=Math.max(0,...OPTS.map(o=>V[o]||0));
+function renderVotes(){const V=CFG.votes||{};const total=OPTS.reduce((s,o)=>s+(V[o]||0),0);const max=Math.max(0,...OPTS.map(o=>V[o]||0));
   const win=CFG.budget||'';
   if(win){$('#voteTitle').textContent='El presupuesto es '+win;$('#voteNote').textContent='¡Ya se decidió! Así quedó la votación:'}
   else $('#voteNote').textContent=total?`Van ${total} ${total===1?'voto':'votos'}. Gana el más votado. Vota al inscribirte, más arriba.`:'Todavía no hay votos. Vota al inscribirte, más arriba.';
   $('#voteBody').innerHTML=OPTS.map(o=>{const n=V[o]||0;const w=win?o===win:(n>0&&n===max);
-    return `<div class="vrow${w?' win':''}"><span class="vl">${esc(o)}</span><span class="vb"><i style="width:${total?Math.round(n/total*100):0}%"></i></span><span class="vc">${n} ${n===1?'voto':'votos'}</span></div>`}).join('');})();
+    return `<div class="vrow${w?' win':''}"><span class="vl">${esc(o)}</span><span class="vb"><i style="width:${total?Math.round(n/total*100):0}%"></i></span><span class="vc">${n} ${n===1?'voto':'votos'}</span></div>`}).join('');}
+renderVotes();
 
 /* ---------- editor de lista ---------- */
 const PF=CFG.prefill||null;
@@ -437,12 +440,24 @@ $('#listForm').addEventListener('submit',async e=>{
     d.innerHTML=`<b>¡Listo, ${esc(v.name)}! 🎉</b> ${btn.textContent==='Guardar cambios'?'Guardamos tus cambios.':'Ya estás inscrito.'}${v.vote?` Tu voto: <b>${esc(v.vote)}</b>.`:''} Puedes volver cuando quieras a cambiar tu lista con este mismo correo. Aparecerás en "Quiénes están" en la próxima actualización.`;
     btn.textContent='Guardar cambios';
     d.scrollIntoView({behavior:'smooth',block:'center'});
+    setTimeout(live,4000);setTimeout(live,25000);
   }catch(err){
     setStatus('');const d=$('#lDone');d.hidden=false;
     d.innerHTML=`No se pudo enviar. Revisa tu internet y vuelve a tocar el botón, o <a href="${esc(buildUrl())}" target="_blank" rel="noopener">usa el formulario de Google</a>.`;
   }finally{btn.disabled=false}
 });
 (()=>{const e=store.get('ss-email');if(e){$('#lEmail').value=e;loadFor(e)}refreshLink()})();
+/* ---------- datos en vivo ---------- */
+async function live(){
+  if(!CFG.live)return;
+  try{const r=await fetch(CFG.live+(CFG.live.includes('?')?'&':'?')+'t='+Date.now());const d=await r.json();
+    if(!Array.isArray(d.people))return;
+    people=d.people;if(!CFG.budget)CFG.votes=d.votes||{};
+    renderStats();renderFamily();renderVotes();
+    $('#updNote').textContent='La lista se actualiza sola.';
+  }catch(e){}
+}
+live();
 </script>
 
 </body></html>
