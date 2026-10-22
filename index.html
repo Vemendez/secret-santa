@@ -215,7 +215,7 @@ footer{text-align:center;color:var(--snow-muted);font:700 1.4rem var(--hand)}
       </div>
       <label class="f" for="lHouse">Tu casa <span class="hint">Los de la misma casa no se sacan entre sí</span><input type="text" id="lHouse" maxlength="40" placeholder="Ej. Los Méndez"></label>
       <div class="f" style="gap:8px">
-        <span class="flabel">Lo que te gustaría <span class="hint">Escribe la idea, pega el link de cualquier tienda (Amazon, Shein, Jumbo…), o las dos cosas</span></span>
+        <span class="flabel">Lo que te gustaría <span class="hint">Escribe la idea, pega el link de cualquier tienda, o las dos cosas</span></span>
         <div id="wishRows" class="wrows"></div>
         <div><button type="button" class="btn ghostlight sm" id="addWish">+ Agregar otro deseo</button></div>
       </div>
@@ -255,7 +255,7 @@ footer{text-align:center;color:var(--snow-muted);font:700 1.4rem var(--hand)}
 <div id="lb" class="lb" hidden role="dialog" aria-label="Foto"><img id="lbImg" alt=""></div>
 
 <script>
-const CFG=/*__DATA__*/{"updated": "2026-10-22T12:48:06.817377+00:00", "group": "Mendez", "date": "2026-12-25", "budget": "", "options": ["RD$3,000", "RD$5,000", "RD$7,500", "RD$10,000"], "form": "https://forms.gle/2Ej8vCUDvu9h21be6", "people": [{"id": "8acf322531", "name": "Eduardo Mendez", "house": "", "wishes": [{"t": "Cuaderno", "u": ""}], "notes": "Grande"}], "tags": null, "salt": "", "prefill": {"base": "https://docs.google.com/forms/d/e/1FAIpQLSf-bTlNv3IenLaGoh471e4qItePI0WFHfxTm4EOBNYrx2jyAA/viewform", "entries": {"name": "entry.2140686805", "email": "entry.2032132945", "house": "entry.1879657790", "wishes": "entry.2005252632", "notes": "entry.606798327", "vote": "entry.1879650429"}}, "votes": {}}/*__END__*/;
+const CFG=/*__DATA__*/{"updated": "2026-10-22T12:51:23.355551+00:00", "group": "Mendez", "date": "2026-12-25", "budget": "", "options": ["RD$3,000", "RD$5,000", "RD$7,500", "RD$10,000"], "form": "https://forms.gle/2Ej8vCUDvu9h21be6", "people": [], "tags": null, "salt": "", "prefill": {"base": "https://docs.google.com/forms/d/e/1FAIpQLSf-bTlNv3IenLaGoh471e4qItePI0WFHfxTm4EOBNYrx2jyAA/viewform", "entries": {"name": "entry.2140686805", "email": "entry.2032132945", "house": "entry.1879657790", "wishes": "entry.2005252632", "notes": "entry.606798327", "vote": "entry.1879650429"}}, "votes": {}}/*__END__*/;
 const $=s=>document.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const PHOTOS=[['foto1','La familia en pijamas junto al árbol'],['foto5','Todos con los brazos arriba'],['foto3','Frente al árbol rojo y dorado'],['foto2','Foto de familia en la sala'],['foto4','Con diademas y lentes navideños'],['foto6','En pijamas de duende y Santa']];
