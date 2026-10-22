@@ -152,6 +152,19 @@ textarea,input[type=email],input[type=url]{width:100%;font:inherit;font-size:16p
 textarea{resize:vertical;min-height:70px}
 .hint{font-weight:400;color:var(--ink-muted);font-size:.84rem}
 .btn.ghostlight.sm{padding:9px 16px;font-size:.92rem}
+.vrow{display:grid;grid-template-columns:7.5em 1fr auto;gap:12px;align-items:center}
+.vrow .vl{font-weight:700;font-variant-numeric:tabular-nums}
+.vrow .vb{height:14px;border-radius:999px;background:var(--paper-2);overflow:hidden}
+.vrow .vb i{display:block;height:100%;background:var(--holly);border-radius:999px}
+.vrow.win .vb i{background:var(--red)}
+.vrow .vc{font-size:.85rem;color:var(--ink-muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.vrow.win .vl::after{content:" ★";color:var(--gold-deep)}
+.votef{border:0;padding:0;margin:0}
+.votef legend{font-weight:600;font-size:.92rem;margin-bottom:8px;padding:0}
+.vopts{display:flex;flex-wrap:wrap;gap:8px}
+.vopts label{display:inline-flex;align-items:center;gap:6px;border:1.5px solid var(--rule);border-radius:999px;padding:8px 14px;cursor:pointer;font-weight:600;background:#fff}
+.vopts input{accent-color:var(--red);color-scheme:light;width:18px;height:18px;margin:0}
+.vopts label:has(input:checked){border-color:var(--red);background:#fff4f4}
 footer{text-align:center;color:var(--snow-muted);font:700 1.4rem var(--hand)}
 @media (prefers-reduced-motion:reduce){.bulb,.tag.swing{animation:none}.pol,.gal img{transition:none}}
 </style>
@@ -178,13 +191,20 @@ footer{text-align:center;color:var(--snow-muted);font:700 1.4rem var(--hand)}
   <section class="card invite" id="inviteSec">
     <h2 id="inviteTitle">Inscríbete</h2>
     <ol class="how">
-      <li><span>Llena el formulario con tu nombre, tu correo, tu lista de deseos (puedes pegar links de Amazon) y una <b>clave secreta</b> que tú inventas.</span></li>
+      <li><span>Llena el formulario con tu nombre, tu correo y tu lista de deseos (puedes pegar links de Amazon).</span></li>
+      <li><span>Vota por el presupuesto en el mismo formulario. Gana el más votado.</span></li>
       <li><span>Cuando estemos todos, se sacan los nombres.</span></li>
-      <li><span>Vuelve a esta página, pon tu clave y descubre a quién le regalas.</span></li>
+      <li><span>Te llega un correo con tu papelito y un link para verlo aquí. ¡Sin claves!</span></li>
     </ol>
     <div class="row"><a class="btn big" id="formBtn" href="#" target="_blank" rel="noopener">Inscribirme</a><a class="btn ghostlight" id="editBtn" href="#" target="_blank" rel="noopener">Cambiar mi lista</a></div>
     <p class="muted small" id="formNote">No necesitas cuenta. Se abre un formulario de Google.</p>
     <p class="muted small" id="editNote">¿Quieres cambiar tu lista de deseos? Toca <b>Cambiar mi lista</b> y llena el formulario otra vez con el <b>mismo correo</b>. Puedes hacerlo cuantas veces quieras, hasta después del sorteo. Siempre se usa tu respuesta más reciente.</p>
+  </section>
+
+  <section class="sec" id="voteSec">
+    <h2 id="voteTitle">¿Cuánto gastamos?</h2>
+    <p class="sub" id="voteNote"></p>
+    <div class="card" id="voteBody"></div>
   </section>
 
   <section class="sec" id="tagSec">
@@ -194,7 +214,7 @@ footer{text-align:center;color:var(--snow-muted);font:700 1.4rem var(--hand)}
 
   <section class="sec" id="listSec">
     <h2>Mi lista de deseos</h2>
-    <p class="sub">Arma tu lista aquí, con links de Amazon si quieres. Al final se abre el formulario ya lleno: solo pones tu clave y tocas Enviar. Puedes volver a cambiarla cuando quieras.</p>
+    <p class="sub">Arma tu lista aquí, con links de Amazon si quieres. Al final se abre el formulario ya lleno: solo tocas Enviar. Puedes volver a cambiarla cuando quieras.</p>
     <form id="listForm" class="card">
       <div class="grid2">
         <label class="f" for="lEmail">Tu correo <span class="hint">El mismo con el que te inscribiste</span><input type="email" id="lEmail" autocomplete="email" required placeholder="tucorreo@gmail.com"></label>
@@ -207,9 +227,9 @@ footer{text-align:center;color:var(--snow-muted);font:700 1.4rem var(--hand)}
         <div><button type="button" class="btn ghostlight sm" id="addWish">+ Agregar otro deseo</button></div>
       </div>
       <label class="f" for="lNotes">Notas para tu Santa <span class="hint">Tallas, colores, alergias</span><textarea id="lNotes" rows="2" maxlength="600"></textarea></label>
-      <label class="f" for="lVideo">Link a tu video saludo <span class="hint">Opcional. Súbelo a Google Drive o YouTube y pega el link</span><input type="url" id="lVideo" maxlength="600" placeholder="https://"></label>
+      <fieldset class="f votef"><legend>Tu voto: ¿qué presupuesto prefieres?</legend><div class="vopts" id="lVote"></div></fieldset>
       <div class="row"><a class="btn" id="sendList" href="#" target="_blank" rel="noopener">Enviar mi lista</a><span id="lStatus" class="status" role="status"></span></div>
-      <p class="muted small">En el formulario pon <b>la misma clave secreta</b> de siempre y toca Enviar. Tu lista nueva aparece en la página en la próxima actualización.</p>
+      <p class="muted small">En el formulario solo toca <b>Enviar</b>. Tu lista nueva aparece en la página en la próxima actualización.</p>
     </form>
   </section>
 
@@ -230,7 +250,7 @@ footer{text-align:center;color:var(--snow-muted);font:700 1.4rem var(--hand)}
 <div id="lb" class="lb" hidden role="dialog" aria-label="Foto"><img id="lbImg" alt=""></div>
 
 <script>
-const CFG=/*__DATA__*/{"updated": "2026-10-18T22:46:34.354423+00:00", "group": "Mendez", "date": "2026-12-25", "budget": "150", "form": "https://forms.gle/2Ej8vCUDvu9h21be6", "people": [], "tags": null, "salt": "", "prefill": {"base": "https://docs.google.com/forms/d/e/1FAIpQLSf-bTlNv3IenLaGoh471e4qItePI0WFHfxTm4EOBNYrx2jyAA/viewform", "entries": {"name": "entry.2140686805", "email": "entry.2032132945", "house": "entry.1879657790", "wishes": "entry.2005252632", "notes": "entry.606798327", "video": "entry.972743061"}}}/*__END__*/;
+const CFG=/*__DATA__*/{"updated": "2026-10-22T11:58:41.265692+00:00", "group": "Mendez", "date": "2026-12-25", "budget": "", "options": ["RD$3,000", "RD$5,000", "RD$7,500", "RD$10,000"], "form": "https://forms.gle/2Ej8vCUDvu9h21be6", "people": [{"id": "8acf322531", "name": "Eduardo Mendez", "house": "", "wishes": [{"t": "Cuaderno", "u": ""}], "notes": "Grande"}], "tags": null, "salt": "", "prefill": {"base": "https://docs.google.com/forms/d/e/1FAIpQLSf-bTlNv3IenLaGoh471e4qItePI0WFHfxTm4EOBNYrx2jyAA/viewform", "entries": {"name": "entry.2140686805", "email": "entry.2032132945", "house": "entry.1879657790", "wishes": "entry.2005252632", "notes": "entry.606798327", "vote": "entry.1879650429"}}, "votes": {}}/*__END__*/;
 const $=s=>document.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const PHOTOS=[['foto1','La familia en pijamas junto al árbol'],['foto5','Todos con los brazos arriba'],['foto3','Frente al árbol rojo y dorado'],['foto2','Foto de familia en la sala'],['foto4','Con diademas y lentes navideños'],['foto6','En pijamas de duende y Santa']];
@@ -259,8 +279,7 @@ function wishHTML(p){
     return `<li><span class="wt">${esc(t)}</span></li>`}).join('')+'</ul>';
 }
 function extras(p){
-  const v=safeUrl(p.video||'');
-  return (p.notes?`<p class="small"><b>Notas:</b> ${esc(p.notes)}</p>`:'')+(v?`<p class="small">🎥 <a class="vlink" href="${esc(v)}" target="_blank" rel="noopener">Ver su video saludo</a></p>`:'');
+  return p.notes?`<p class="small"><b>Notas:</b> ${esc(p.notes)}</p>`:'';
 }
 function fmtDate(d){try{return new Date(d+'T12:00:00').toLocaleDateString('es-DO',{weekday:'long',day:'numeric',month:'long'})}catch(e){return d}}
 function daysTo(d){const t=new Date(d+'T00:00:00');const n=new Date();n.setHours(0,0,0,0);return Math.round((t-n)/864e5)}
@@ -271,7 +290,7 @@ $('#eyebrow').textContent='Navidad 2026 · '+(CFG.group?'Familia '+CFG.group:'In
   if(CFG.date){const d=daysTo(CFG.date);
     parts.push(`<span class="stat hot">${d>1?`Faltan <b>${d}</b> días`:d===1?'<b>¡Es mañana!</b>':d===0?'<b>¡Es hoy!</b>':'¡Feliz Navidad!'}</span>`);
     parts.push(`<span class="stat">Intercambio: <b>${esc(fmtDate(CFG.date))}</b></span>`)}
-  if(CFG.budget)parts.push(`<span class="stat">Presupuesto <b>${esc(CFG.budget)}</b></span>`);
+  parts.push(CFG.budget?`<span class="stat">Presupuesto <b>${esc(CFG.budget)}</b></span>`:`<span class="stat">Presupuesto: <b>en votación</b></span>`);
   parts.push(`<span class="stat"><b>${people.length}</b> ${people.length===1?'inscrito':'inscritos'}</span>`);
   parts.push(`<span class="stat">${CFG.tags?'🎁 Nombres sacados':'Nombres sin sacar'}</span>`);
   $('#stats').innerHTML=parts.join('');})();
@@ -279,7 +298,7 @@ $('#eyebrow').textContent='Navidad 2026 · '+(CFG.group?'Familia '+CFG.group:'In
 /* invite */
 (()=>{const b=$('#formBtn'),u=safeUrl(CFG.form||'');
   if(CFG.tags){$('#inviteTitle').textContent='¡Ya se sacaron los nombres!';b.textContent='Ver mi papelito';b.href='#tagSec';b.removeAttribute('target');
-    $('#formNote').textContent='Si se te olvidó tu clave, pídesela al organizador.'}
+    $('#formNote').textContent='Tu papelito te llegó por correo, con un link para verlo aquí.'}
   const e=$('#editBtn');
   if(u){if(!CFG.tags)b.href=u;e.href=u}else{b.setAttribute('aria-disabled','true');b.textContent='El formulario abre muy pronto';$('#formNote').textContent='Vuelve en un ratito.';e.hidden=true;$('#editNote').hidden=true}})();
 
@@ -289,7 +308,7 @@ $('#familyCount').textContent=people.length?`${people.length} ${people.length===
 $('#familyList').innerHTML=people.length?people.map((p,i)=>`<details class="person"><summary>
   <span class="disc" style="background:${DISC[i%DISC.length]}" aria-hidden="true">${esc((p.name||'?').trim().charAt(0).toUpperCase())}</span>
   <span style="min-width:0"><span class="pname">${esc(p.name)}</span>${p.house?`<br><span class="pmeta">${esc(p.house)}</span>`:''}</span>
-  <span class="chips">${p.video?'<span class="chip">🎥 video</span>':''}<span class="chip">${(p.wishes||[]).length} ${(p.wishes||[]).length===1?'deseo':'deseos'}</span></span>
+  <span class="chips"><span class="chip">${(p.wishes||[]).length} ${(p.wishes||[]).length===1?'deseo':'deseos'}</span></span>
   </summary><div class="pbody">${wishHTML(p)}${extras(p)}</div></details>`).join('')
   :'<p class="empty">Todavía no hay nadie en la lista. ¡Sé el primero en inscribirte!</p>';
 
@@ -308,20 +327,24 @@ async function openTag(clave){
   const pt=await crypto.subtle.decrypt({name:'AES-GCM',iv:unb64(t.iv)},key,unb64(t.ct));
   return JSON.parse(new TextDecoder().decode(pt));
 }
+const store0={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
 function renderTagIdle(){
-  if(!CFG.tags){$('#tagBody').innerHTML=blank('Todavía no','Los nombres se sacan cuando estemos todos inscritos. Te avisamos por el chat de la familia.');return}
-  $('#tagBody').innerHTML=`<form id="keyForm" class="card">
-    <div><h3>Pon tu clave secreta</h3><p class="muted small">La misma que inventaste en el formulario. Solo tú ves tu papelito.</p></div>
-    <label class="f" for="clave">Clave<input type="password" id="clave" autocomplete="off" autocapitalize="off" required></label>
-    <div class="row"><button class="btn" type="submit">Ver mi papelito</button><span id="keyStatus" class="status" role="status"></span></div>
-  </form>`;
-  $('#keyForm').addEventListener('submit',async e=>{
-    e.preventDefault();const st=$('#keyStatus');st.className='status';st.textContent='Abriendo…';
-    try{const r=await openTag($('#clave').value);
-      if(!r){st.className='status err';st.textContent='Esa clave no aparece. Revísala (no importan mayúsculas ni acentos) o pídesela al organizador.';return}
-      showTag(r)}
-    catch(err){st.className='status err';st.textContent='Este navegador no pudo abrir el papelito. Prueba en Chrome o Safari actualizados.'}
-  });
+  if(!CFG.tags){$('#tagBody').innerHTML=blank('Todavía no','Los nombres se sacan cuando estemos todos inscritos. Cuando eso pase, te llega un correo con tu papelito.');return}
+  const saved=store0.get('ss-token:'+CFG.salt);
+  $('#tagBody').innerHTML=`<div class="card">
+    <h3>Tu papelito te llegó por correo 💌</h3>
+    <p class="muted small">Abre el correo del Secret Santa y toca <b>Ver mi papelito</b>. Ese botón es tu link personal: abre tu papelito aquí mismo, sin claves. ¿No lo encuentras? Busca "Secret Santa" en tu correo, o pídele tu link al organizador.</p>
+    ${saved?'<div class="row"><button class="btn" type="button" id="showSaved">Mostrar mi papelito</button></div>':''}
+    <span id="keyStatus" class="status" role="status"></span>
+  </div>`;
+  if(saved)$('#showSaved').addEventListener('click',()=>tryOpen(saved));
+}
+async function tryOpen(tok){
+  const st=$('#keyStatus');
+  try{const r=await openTag(tok);
+    if(!r){renderTagIdle();const s=$('#keyStatus');if(s){s.className='status err';s.textContent='Ese link no es válido. Usa el botón del correo más reciente o pídele tu link al organizador.'}return}
+    store0.set('ss-token:'+CFG.salt,tok);showTag(r);$('#tagSec').scrollIntoView({behavior:'smooth'})}
+  catch(err){renderTagIdle();const s=$('#keyStatus');if(s){s.className='status err';s.textContent='Este navegador no pudo abrir el papelito. Prueba en Chrome o Safari actualizados.'}}
 }
 function showTag(r){
   const g=people.find(p=>p.id===r.to)||{name:'?'};
@@ -334,6 +357,20 @@ function showTag(r){
   $('#hideTag').addEventListener('click',renderTagIdle);
 }
 renderTagIdle();
+(()=>{const m=location.hash.match(/p=([A-Za-z0-9]+)/);if(m&&CFG.tags){tryOpen(m[1]);try{history.replaceState(null,'',location.pathname)}catch(e){}}})();
+
+
+/* ---------- votación ---------- */
+const OPTS=CFG.options||['RD$3,000','RD$5,000','RD$7,500','RD$10,000'];
+$('#lVote').innerHTML=OPTS.map((o,i)=>`<label for="lVote${i}"><input type="radio" name="lVote" id="lVote${i}" value="${esc(o)}">${esc(o)}</label>`).join('');
+function voteVal(){const r=document.querySelector('input[name="lVote"]:checked');return r?r.value:''}
+function setVote(v){const r=[...document.querySelectorAll('input[name="lVote"]')].find(x=>x.value===v);if(r)r.checked=true}
+(()=>{const V=CFG.votes||{};const total=OPTS.reduce((s,o)=>s+(V[o]||0),0);const max=Math.max(0,...OPTS.map(o=>V[o]||0));
+  const win=CFG.budget||'';
+  if(win){$('#voteTitle').textContent='El presupuesto es '+win;$('#voteNote').textContent='¡Ya se decidió! Así quedó la votación:'}
+  else $('#voteNote').textContent=total?`Van ${total} ${total===1?'voto':'votos'}. Gana el más votado. Vota al inscribirte o desde "Mi lista de deseos" más abajo.`:'Todavía no hay votos. Vota al inscribirte o desde "Mi lista de deseos" más abajo.';
+  $('#voteBody').innerHTML=OPTS.map(o=>{const n=V[o]||0;const w=win?o===win:(n>0&&n===max);
+    return `<div class="vrow${w?' win':''}"><span class="vl">${esc(o)}</span><span class="vb"><i style="width:${total?Math.round(n/total*100):0}%"></i></span><span class="vc">${n} ${n===1?'voto':'votos'}</span></div>`}).join('');})();
 
 /* ---------- editor de lista ---------- */
 const PF=CFG.prefill||null;
@@ -358,7 +395,7 @@ async function loadFor(email){
   if(!$('#lHouse').value)$('#lHouse').value=src.house||'';
   const cur=readRows();if(!cur.length)setRows(src.wishes);
   if(!$('#lNotes').value)$('#lNotes').value=src.notes||'';
-  if(!$('#lVideo').value)$('#lVideo').value=src.video||'';
+  if(src.vote&&!voteVal())setVote(src.vote);
   setStatus('Cargamos tu lista. Cámbiala y vuelve a enviarla.');
   refreshLink();
 }
@@ -367,7 +404,7 @@ function buildUrl(){
   if(!PF)return '';
   const email=$('#lEmail').value.trim(),name=$('#lName').value.trim();
   const wishes=readRows().map(w=>w.t&&w.u?`${w.t} — ${w.u}`:(w.t||w.u)).join('\n');
-  const v={name,email,house:$('#lHouse').value.trim(),wishes,notes:$('#lNotes').value.trim(),video:$('#lVideo').value.trim()};
+  const v={name,email,house:$('#lHouse').value.trim(),wishes,notes:$('#lNotes').value.trim(),vote:voteVal()};
   const q=new URLSearchParams();q.set('usp','pp_url');
   for(const k in v)if(v[k]&&PF.entries[k])q.set(PF.entries[k],v[k]);
   return PF.base+'?'+q.toString();
@@ -391,9 +428,9 @@ $('#sendList').addEventListener('click',e=>{
   if(a.getAttribute('aria-disabled')==='true'){e.preventDefault();setStatus('Pon tu correo y tu nombre primero.',true);return}
   a.href=buildUrl();
   const email=$('#lEmail').value.trim().toLowerCase();
-  store.set('ss-list:'+email,JSON.stringify({name:$('#lName').value.trim(),house:$('#lHouse').value.trim(),wishes:readRows(),notes:$('#lNotes').value.trim(),video:$('#lVideo').value.trim(),at:new Date().toISOString()}));
+  store.set('ss-list:'+email,JSON.stringify({name:$('#lName').value.trim(),house:$('#lHouse').value.trim(),wishes:readRows(),notes:$('#lNotes').value.trim(),vote:voteVal(),at:new Date().toISOString()}));
   store.set('ss-email',email);
-  setStatus('Se abrió el formulario. Pon tu clave y toca Enviar.');
+  setStatus('Se abrió el formulario. Solo toca Enviar.');
 });
 (()=>{const e=store.get('ss-email');if(e){$('#lEmail').value=e;loadFor(e)}refreshLink()})();
 </script>
