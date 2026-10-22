@@ -165,6 +165,8 @@ textarea{resize:vertical;min-height:70px}
 .vopts label{display:inline-flex;align-items:center;gap:6px;border:1.5px solid var(--rule);border-radius:999px;padding:8px 14px;cursor:pointer;font-weight:600;background:#fff}
 .vopts input{accent-color:var(--red);color-scheme:light;width:18px;height:18px;margin:0}
 .vopts label:has(input:checked){border-color:var(--red);background:#fff4f4}
+.done{background:#eaf4ec;border:1.5px solid var(--holly);color:var(--ink);border-radius:12px;padding:14px 16px;font-size:.95rem;line-height:1.5}
+.done a{color:var(--holly);font-weight:700}
 footer{text-align:center;color:var(--snow-muted);font:700 1.4rem var(--hand)}
 @media (prefers-reduced-motion:reduce){.bulb,.tag.swing{animation:none}.pol,.gal img{transition:none}}
 </style>
@@ -189,16 +191,36 @@ footer{text-align:center;color:var(--snow-muted);font:700 1.4rem var(--hand)}
   </header>
 
   <section class="card invite" id="inviteSec">
-    <h2 id="inviteTitle">Inscríbete</h2>
+    <h2 id="inviteTitle">¿Cómo funciona?</h2>
     <ol class="how">
-      <li><span>Llena el formulario con tu nombre, tu correo y tu lista de deseos (puedes pegar links de Amazon).</span></li>
-      <li><span>Vota por el presupuesto en el mismo formulario. Gana el más votado.</span></li>
+      <li><span>Inscríbete aquí mismo con tu nombre, tu correo y tu lista de deseos (puedes pegar links de Amazon).</span></li>
+      <li><span>Vota por el presupuesto. Gana el más votado.</span></li>
       <li><span>Cuando estemos todos, se sacan los nombres.</span></li>
       <li><span>Te llega un correo con tu papelito y un link para verlo aquí. ¡Sin claves!</span></li>
     </ol>
-    <div class="row"><a class="btn big" id="formBtn" href="#" target="_blank" rel="noopener">Inscribirme</a><a class="btn ghostlight" id="editBtn" href="#" target="_blank" rel="noopener">Cambiar mi lista</a></div>
-    <p class="muted small" id="formNote">No necesitas cuenta. Se abre un formulario de Google.</p>
-    <p class="muted small" id="editNote">¿Quieres cambiar tu lista de deseos? Toca <b>Cambiar mi lista</b> y llena el formulario otra vez con el <b>mismo correo</b>. Puedes hacerlo cuantas veces quieras, hasta después del sorteo. Siempre se usa tu respuesta más reciente.</p>
+    <div class="row"><a class="btn big" id="formBtn" href="#listSec">Inscribirme</a></div>
+    <p class="muted small" id="formNote">No necesitas cuenta. Todo se hace en esta página.</p>
+  </section>
+
+  <section class="sec" id="listSec">
+    <h2 id="listTitle">Inscríbete</h2>
+    <p class="sub" id="listSub">Llena esto y toca <b>Inscribirme</b>. ¿Ya estás inscrito? Pon tu mismo correo y cambia tu lista o tu voto cuando quieras. Siempre vale lo último que mandes.</p>
+    <form id="listForm" class="card">
+      <div class="grid2">
+        <label class="f" for="lEmail">Tu correo <span class="hint">Ahí te llega tu papelito</span><input type="email" id="lEmail" autocomplete="email" required placeholder="tucorreo@gmail.com"></label>
+        <label class="f" for="lName">Tu nombre<input type="text" id="lName" maxlength="40" autocomplete="name" required></label>
+      </div>
+      <label class="f" for="lHouse">Tu casa <span class="hint">Los de la misma casa no se sacan entre sí</span><input type="text" id="lHouse" maxlength="40" placeholder="Ej. Los Méndez"></label>
+      <div class="f" style="gap:8px">
+        <span>Lo que te gustaría <span class="hint">Escribe la idea, pega el link, o las dos cosas</span></span>
+        <div id="wishRows" class="wrows"></div>
+        <div><button type="button" class="btn ghostlight sm" id="addWish">+ Agregar otro deseo</button></div>
+      </div>
+      <label class="f" for="lNotes">Notas para tu Santa <span class="hint">Tallas, colores, alergias</span><textarea id="lNotes" rows="2" maxlength="600"></textarea></label>
+      <fieldset class="f votef"><legend>Tu voto: ¿qué presupuesto prefieres?</legend><div class="vopts" id="lVote"></div></fieldset>
+      <div class="row"><button class="btn big" id="sendList" type="submit">Inscribirme</button><span id="lStatus" class="status" role="status"></span></div>
+      <div id="lDone" class="done" hidden></div>
+    </form>
   </section>
 
   <section class="sec" id="voteSec">
@@ -212,26 +234,6 @@ footer{text-align:center;color:var(--snow-muted);font:700 1.4rem var(--hand)}
     <div id="tagBody" class="stack"></div>
   </section>
 
-  <section class="sec" id="listSec">
-    <h2>Mi lista de deseos</h2>
-    <p class="sub">Arma tu lista aquí, con links de Amazon si quieres. Al final se abre el formulario ya lleno: solo tocas Enviar. Puedes volver a cambiarla cuando quieras.</p>
-    <form id="listForm" class="card">
-      <div class="grid2">
-        <label class="f" for="lEmail">Tu correo <span class="hint">El mismo con el que te inscribiste</span><input type="email" id="lEmail" autocomplete="email" required placeholder="tucorreo@gmail.com"></label>
-        <label class="f" for="lName">Tu nombre<input type="text" id="lName" maxlength="40" autocomplete="name" required></label>
-      </div>
-      <label class="f" for="lHouse">Tu casa <span class="hint">Los de la misma casa no se sacan entre sí</span><input type="text" id="lHouse" maxlength="40" placeholder="Ej. Los Méndez"></label>
-      <div class="f" style="gap:8px">
-        <span>Lo que te gustaría <span class="hint">Escribe la idea, pega el link, o las dos cosas</span></span>
-        <div id="wishRows" class="wrows"></div>
-        <div><button type="button" class="btn ghostlight sm" id="addWish">+ Agregar otro deseo</button></div>
-      </div>
-      <label class="f" for="lNotes">Notas para tu Santa <span class="hint">Tallas, colores, alergias</span><textarea id="lNotes" rows="2" maxlength="600"></textarea></label>
-      <fieldset class="f votef"><legend>Tu voto: ¿qué presupuesto prefieres?</legend><div class="vopts" id="lVote"></div></fieldset>
-      <div class="row"><a class="btn" id="sendList" href="#" target="_blank" rel="noopener">Enviar mi lista</a><span id="lStatus" class="status" role="status"></span></div>
-      <p class="muted small">En el formulario solo toca <b>Enviar</b>. Tu lista nueva aparece en la página en la próxima actualización.</p>
-    </form>
-  </section>
 
   <section class="sec">
     <div class="sec-head"><h2>Quiénes están</h2><span id="familyCount" class="count"></span></div>
@@ -250,7 +252,7 @@ footer{text-align:center;color:var(--snow-muted);font:700 1.4rem var(--hand)}
 <div id="lb" class="lb" hidden role="dialog" aria-label="Foto"><img id="lbImg" alt=""></div>
 
 <script>
-const CFG=/*__DATA__*/{"updated": "2026-10-22T11:58:41.265692+00:00", "group": "Mendez", "date": "2026-12-25", "budget": "", "options": ["RD$3,000", "RD$5,000", "RD$7,500", "RD$10,000"], "form": "https://forms.gle/2Ej8vCUDvu9h21be6", "people": [{"id": "8acf322531", "name": "Eduardo Mendez", "house": "", "wishes": [{"t": "Cuaderno", "u": ""}], "notes": "Grande"}], "tags": null, "salt": "", "prefill": {"base": "https://docs.google.com/forms/d/e/1FAIpQLSf-bTlNv3IenLaGoh471e4qItePI0WFHfxTm4EOBNYrx2jyAA/viewform", "entries": {"name": "entry.2140686805", "email": "entry.2032132945", "house": "entry.1879657790", "wishes": "entry.2005252632", "notes": "entry.606798327", "vote": "entry.1879650429"}}, "votes": {}}/*__END__*/;
+const CFG=/*__DATA__*/{"updated": "2026-10-22T12:31:58.038319+00:00", "group": "Mendez", "date": "2026-12-25", "budget": "", "options": ["RD$3,000", "RD$5,000", "RD$7,500", "RD$10,000"], "form": "https://forms.gle/2Ej8vCUDvu9h21be6", "people": [{"id": "8acf322531", "name": "Eduardo Mendez", "house": "", "wishes": [{"t": "Cuaderno", "u": ""}], "notes": "Grande"}], "tags": null, "salt": "", "prefill": {"base": "https://docs.google.com/forms/d/e/1FAIpQLSf-bTlNv3IenLaGoh471e4qItePI0WFHfxTm4EOBNYrx2jyAA/viewform", "entries": {"name": "entry.2140686805", "email": "entry.2032132945", "house": "entry.1879657790", "wishes": "entry.2005252632", "notes": "entry.606798327", "vote": "entry.1879650429"}}, "votes": {}}/*__END__*/;
 const $=s=>document.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const PHOTOS=[['foto1','La familia en pijamas junto al árbol'],['foto5','Todos con los brazos arriba'],['foto3','Frente al árbol rojo y dorado'],['foto2','Foto de familia en la sala'],['foto4','Con diademas y lentes navideños'],['foto6','En pijamas de duende y Santa']];
@@ -296,14 +298,14 @@ $('#eyebrow').textContent='Navidad 2026 · '+(CFG.group?'Familia '+CFG.group:'In
   $('#stats').innerHTML=parts.join('');})();
 
 /* invite */
-(()=>{const b=$('#formBtn'),u=safeUrl(CFG.form||'');
-  if(CFG.tags){$('#inviteTitle').textContent='¡Ya se sacaron los nombres!';b.textContent='Ver mi papelito';b.href='#tagSec';b.removeAttribute('target');
-    $('#formNote').textContent='Tu papelito te llegó por correo, con un link para verlo aquí.'}
-  const e=$('#editBtn');
-  if(u){if(!CFG.tags)b.href=u;e.href=u}else{b.setAttribute('aria-disabled','true');b.textContent='El formulario abre muy pronto';$('#formNote').textContent='Vuelve en un ratito.';e.hidden=true;$('#editNote').hidden=true}})();
+(()=>{const b=$('#formBtn');
+  if(CFG.tags){$('#inviteTitle').textContent='¡Ya se sacaron los nombres!';b.textContent='Ver mi papelito';b.href='#tagSec';
+    $('#formNote').textContent='Tu papelito te llegó por correo, con un link para verlo aquí.';
+    $('#listTitle').textContent='Tu lista de deseos'}
+  if(!CFG.prefill){b.setAttribute('aria-disabled','true');b.textContent='Las inscripciones abren muy pronto'}})();
 
 /* family */
-if(CFG.updated)$('#updNote').textContent='Listas actualizadas el '+new Date(CFG.updated).toLocaleDateString('es-DO',{day:'numeric',month:'long'})+'. Los cambios que hagas en el formulario aparecen aquí en la próxima actualización.';
+if(CFG.updated)$('#updNote').textContent='Listas actualizadas el '+new Date(CFG.updated).toLocaleDateString('es-DO',{day:'numeric',month:'long'})+'. Las inscripciones y cambios nuevos aparecen aquí en la próxima actualización.';
 $('#familyCount').textContent=people.length?`${people.length} ${people.length===1?'inscrito':'inscritos'}`:'';
 $('#familyList').innerHTML=people.length?people.map((p,i)=>`<details class="person"><summary>
   <span class="disc" style="background:${DISC[i%DISC.length]}" aria-hidden="true">${esc((p.name||'?').trim().charAt(0).toUpperCase())}</span>
@@ -368,7 +370,7 @@ function setVote(v){const r=[...document.querySelectorAll('input[name="lVote"]')
 (()=>{const V=CFG.votes||{};const total=OPTS.reduce((s,o)=>s+(V[o]||0),0);const max=Math.max(0,...OPTS.map(o=>V[o]||0));
   const win=CFG.budget||'';
   if(win){$('#voteTitle').textContent='El presupuesto es '+win;$('#voteNote').textContent='¡Ya se decidió! Así quedó la votación:'}
-  else $('#voteNote').textContent=total?`Van ${total} ${total===1?'voto':'votos'}. Gana el más votado. Vota al inscribirte o desde "Mi lista de deseos" más abajo.`:'Todavía no hay votos. Vota al inscribirte o desde "Mi lista de deseos" más abajo.';
+  else $('#voteNote').textContent=total?`Van ${total} ${total===1?'voto':'votos'}. Gana el más votado. Vota al inscribirte, más arriba.`:'Todavía no hay votos. Vota al inscribirte, más arriba.';
   $('#voteBody').innerHTML=OPTS.map(o=>{const n=V[o]||0;const w=win?o===win:(n>0&&n===max);
     return `<div class="vrow${w?' win':''}"><span class="vl">${esc(o)}</span><span class="vb"><i style="width:${total?Math.round(n/total*100):0}%"></i></span><span class="vc">${n} ${n===1?'voto':'votos'}</span></div>`}).join('');})();
 
@@ -396,41 +398,46 @@ async function loadFor(email){
   const cur=readRows();if(!cur.length)setRows(src.wishes);
   if(!$('#lNotes').value)$('#lNotes').value=src.notes||'';
   if(src.vote&&!voteVal())setVote(src.vote);
-  setStatus('Cargamos tu lista. Cámbiala y vuelve a enviarla.');
+  setStatus('Ya estás inscrito. Cambia lo que quieras y toca Guardar cambios.');$('#sendList').textContent='Guardar cambios';
   refreshLink();
 }
 function setStatus(txt,err){const s=$('#lStatus');s.textContent=txt||'';s.className='status'+(err?' err':'')}
-function buildUrl(){
-  if(!PF)return '';
-  const email=$('#lEmail').value.trim(),name=$('#lName').value.trim();
+function vals(){
   const wishes=readRows().map(w=>w.t&&w.u?`${w.t} — ${w.u}`:(w.t||w.u)).join('\n');
-  const v={name,email,house:$('#lHouse').value.trim(),wishes,notes:$('#lNotes').value.trim(),vote:voteVal()};
-  const q=new URLSearchParams();q.set('usp','pp_url');
-  for(const k in v)if(v[k]&&PF.entries[k])q.set(PF.entries[k],v[k]);
-  return PF.base+'?'+q.toString();
+  return {name:$('#lName').value.trim(),email:$('#lEmail').value.trim(),house:$('#lHouse').value.trim(),wishes,notes:$('#lNotes').value.trim(),vote:voteVal()};
 }
-function refreshLink(){
-  const a=$('#sendList');
-  if(!PF){a.setAttribute('aria-disabled','true');a.textContent='Disponible muy pronto';return}
-  const ok=/\S+@\S+\.\S+/.test($('#lEmail').value)&&$('#lName').value.trim();
-  if(ok){a.removeAttribute('aria-disabled');a.href=buildUrl()}else{a.setAttribute('aria-disabled','true');a.href='#'}
-}
+function buildUrl(){const v=vals();const q=new URLSearchParams();q.set('usp','pp_url');for(const k in v)if(v[k]&&PF.entries[k])q.set(PF.entries[k],v[k]);return PF.base+'?'+q.toString()}
+function refreshLink(){}
 setRows([]);
-$('#addWish').addEventListener('click',()=>{addRow().children[0].focus();refreshLink()});
-$('#wishRows').addEventListener('click',e=>{if(e.target.classList.contains('x')){e.target.parentElement.remove();if(!$('#wishRows').children.length)addRow();refreshLink()}});
+$('#addWish').addEventListener('click',()=>{addRow().children[0].focus()});
+$('#wishRows').addEventListener('click',e=>{if(e.target.classList.contains('x')){e.target.parentElement.remove();if(!$('#wishRows').children.length)addRow()}});
 $('#wishRows').addEventListener('paste',e=>{const inp=e.target;if(inp.type!=='text')return;const txt=((e.clipboardData&&e.clipboardData.getData('text'))||'').trim();
-  if(/^https?:\/\/\S+$/.test(txt)){e.preventDefault();inp.nextElementSibling.value=txt;if(!inp.value)inp.placeholder='Ponle un nombre (ej. Audífonos)';refreshLink()}});
-$('#listForm').addEventListener('input',refreshLink);
+  if(/^https?:\/\/\S+$/.test(txt)){e.preventDefault();inp.nextElementSibling.value=txt;if(!inp.value)inp.placeholder='Ponle un nombre (ej. Audífonos)'}});
 $('#lEmail').addEventListener('change',e=>loadFor(e.target.value));
-$('#listForm').addEventListener('submit',e=>e.preventDefault());
-$('#sendList').addEventListener('click',e=>{
-  const a=e.currentTarget;
-  if(a.getAttribute('aria-disabled')==='true'){e.preventDefault();setStatus('Pon tu correo y tu nombre primero.',true);return}
-  a.href=buildUrl();
-  const email=$('#lEmail').value.trim().toLowerCase();
-  store.set('ss-list:'+email,JSON.stringify({name:$('#lName').value.trim(),house:$('#lHouse').value.trim(),wishes:readRows(),notes:$('#lNotes').value.trim(),vote:voteVal(),at:new Date().toISOString()}));
-  store.set('ss-email',email);
-  setStatus('Se abrió el formulario. Solo toca Enviar.');
+$('#listForm').addEventListener('input',()=>{$('#lDone').hidden=true});
+$('#listForm').addEventListener('submit',async e=>{
+  e.preventDefault();
+  if(!PF){setStatus('Las inscripciones abren muy pronto.',true);return}
+  const v=vals();
+  if(!v.name){setStatus('Pon tu nombre.',true);$('#lName').focus();return}
+  if(!/^\S+@\S+\.\S+$/.test(v.email)){setStatus('Revisa tu correo: ahí te va a llegar tu papelito.',true);$('#lEmail').focus();return}
+  if(!readRows().length&&!v.notes){setStatus('Agrega al menos un deseo para tu Santa.',true);return}
+  const btn=$('#sendList');btn.disabled=true;setStatus('Enviando…');
+  const body=new URLSearchParams();for(const k in v)if(v[k]&&PF.entries[k])body.set(PF.entries[k],v[k]);
+  try{
+    await fetch(PF.base.replace(/viewform$/,'formResponse'),{method:'POST',mode:'no-cors',body});
+    const email=v.email.toLowerCase();
+    store.set('ss-list:'+email,JSON.stringify({name:v.name,house:v.house,wishes:readRows(),notes:v.notes,vote:v.vote,at:new Date().toISOString()}));
+    store.set('ss-email',email);
+    setStatus('');
+    const d=$('#lDone');d.hidden=false;
+    d.innerHTML=`<b>¡Listo, ${esc(v.name.split(' ')[0])}! 🎉</b> ${btn.textContent==='Guardar cambios'?'Guardamos tus cambios.':'Ya estás inscrito.'}${v.vote?` Tu voto: <b>${esc(v.vote)}</b>.`:''} Puedes volver cuando quieras a cambiar tu lista con este mismo correo. Aparecerás en "Quiénes están" en la próxima actualización.`;
+    btn.textContent='Guardar cambios';
+    d.scrollIntoView({behavior:'smooth',block:'center'});
+  }catch(err){
+    setStatus('');const d=$('#lDone');d.hidden=false;
+    d.innerHTML=`No se pudo enviar. Revisa tu internet y vuelve a tocar el botón, o <a href="${esc(buildUrl())}" target="_blank" rel="noopener">usa el formulario de Google</a>.`;
+  }finally{btn.disabled=false}
 });
 (()=>{const e=store.get('ss-email');if(e){$('#lEmail').value=e;loadFor(e)}refreshLink()})();
 </script>
