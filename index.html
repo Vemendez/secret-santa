@@ -146,7 +146,10 @@ details.person[open] summary{border-bottom:1px solid var(--rule)}
 .wrow .x{border:0;background:transparent;color:var(--ink-muted);font-size:1.3rem;line-height:1;width:36px;height:36px;border-radius:50%;cursor:pointer}
 .wrow .x:hover{background:var(--rule);color:var(--red)}
 @media (max-width:520px){.wrow{grid-template-columns:1fr auto}.wrow input:nth-child(2){grid-column:1/2;grid-row:2}.wrow .x{grid-row:1/3;grid-column:2}}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:end}
+.f .hint{display:block;margin-top:2px}
+.flabel{font-weight:600;font-size:.92rem}
+.flabel .hint{margin-top:6px}
 @media (max-width:520px){.grid2{grid-template-columns:1fr}}
 textarea,input[type=email],input[type=url]{width:100%;font:inherit;font-size:16px;color:var(--ink);background:#fff;border:1px solid var(--rule);border-radius:10px;padding:11px 12px;color-scheme:light}
 textarea{resize:vertical;min-height:70px}
@@ -193,7 +196,7 @@ footer{text-align:center;color:var(--snow-muted);font:700 1.4rem var(--hand)}
   <section class="card invite" id="inviteSec">
     <h2 id="inviteTitle">¿Cómo funciona?</h2>
     <ol class="how">
-      <li><span>Inscríbete aquí mismo con tu nombre, tu correo y tu lista de deseos (puedes pegar links de Amazon).</span></li>
+      <li><span>Inscríbete aquí mismo con tu nombre, tu correo y tu lista de deseos (puedes pegar links de cualquier tienda).</span></li>
       <li><span>Vota por el presupuesto. Gana el más votado.</span></li>
       <li><span>Cuando estemos todos, se sacan los nombres.</span></li>
       <li><span>Te llega un correo con tu papelito y un link para verlo aquí. ¡Sin claves!</span></li>
@@ -208,11 +211,11 @@ footer{text-align:center;color:var(--snow-muted);font:700 1.4rem var(--hand)}
     <form id="listForm" class="card">
       <div class="grid2">
         <label class="f" for="lEmail">Tu correo <span class="hint">Ahí te llega tu papelito</span><input type="email" id="lEmail" autocomplete="email" required placeholder="tucorreo@gmail.com"></label>
-        <label class="f" for="lName">Tu nombre<input type="text" id="lName" maxlength="40" autocomplete="name" required></label>
+        <label class="f" for="lName">Tu nombre <span class="hint">Como te dice la familia</span><input type="text" id="lName" maxlength="40" autocomplete="name" required></label>
       </div>
       <label class="f" for="lHouse">Tu casa <span class="hint">Los de la misma casa no se sacan entre sí</span><input type="text" id="lHouse" maxlength="40" placeholder="Ej. Los Méndez"></label>
       <div class="f" style="gap:8px">
-        <span>Lo que te gustaría <span class="hint">Escribe la idea, pega el link, o las dos cosas</span></span>
+        <span class="flabel">Lo que te gustaría <span class="hint">Escribe la idea, pega el link de cualquier tienda (Amazon, Shein, Jumbo…), o las dos cosas</span></span>
         <div id="wishRows" class="wrows"></div>
         <div><button type="button" class="btn ghostlight sm" id="addWish">+ Agregar otro deseo</button></div>
       </div>
@@ -252,7 +255,7 @@ footer{text-align:center;color:var(--snow-muted);font:700 1.4rem var(--hand)}
 <div id="lb" class="lb" hidden role="dialog" aria-label="Foto"><img id="lbImg" alt=""></div>
 
 <script>
-const CFG=/*__DATA__*/{"updated": "2026-10-22T12:33:57.500584+00:00", "group": "Mendez", "date": "2026-12-25", "budget": "", "options": ["RD$3,000", "RD$5,000", "RD$7,500", "RD$10,000"], "form": "https://forms.gle/2Ej8vCUDvu9h21be6", "people": [{"id": "8acf322531", "name": "Eduardo Mendez", "house": "", "wishes": [{"t": "Cuaderno", "u": ""}], "notes": "Grande"}], "tags": null, "salt": "", "prefill": {"base": "https://docs.google.com/forms/d/e/1FAIpQLSf-bTlNv3IenLaGoh471e4qItePI0WFHfxTm4EOBNYrx2jyAA/viewform", "entries": {"name": "entry.2140686805", "email": "entry.2032132945", "house": "entry.1879657790", "wishes": "entry.2005252632", "notes": "entry.606798327", "vote": "entry.1879650429"}}, "votes": {}}/*__END__*/;
+const CFG=/*__DATA__*/{"updated": "2026-10-22T12:48:06.817377+00:00", "group": "Mendez", "date": "2026-12-25", "budget": "", "options": ["RD$3,000", "RD$5,000", "RD$7,500", "RD$10,000"], "form": "https://forms.gle/2Ej8vCUDvu9h21be6", "people": [{"id": "8acf322531", "name": "Eduardo Mendez", "house": "", "wishes": [{"t": "Cuaderno", "u": ""}], "notes": "Grande"}], "tags": null, "salt": "", "prefill": {"base": "https://docs.google.com/forms/d/e/1FAIpQLSf-bTlNv3IenLaGoh471e4qItePI0WFHfxTm4EOBNYrx2jyAA/viewform", "entries": {"name": "entry.2140686805", "email": "entry.2032132945", "house": "entry.1879657790", "wishes": "entry.2005252632", "notes": "entry.606798327", "vote": "entry.1879650429"}}, "votes": {}}/*__END__*/;
 const $=s=>document.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const PHOTOS=[['foto1','La familia en pijamas junto al árbol'],['foto5','Todos con los brazos arriba'],['foto3','Frente al árbol rojo y dorado'],['foto2','Foto de familia en la sala'],['foto4','Con diademas y lentes navideños'],['foto6','En pijamas de duende y Santa']];
@@ -379,7 +382,7 @@ const PF=CFG.prefill||null;
 const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
 function addRow(t='',u=''){
   const row=document.createElement('div');row.className='wrow';
-  row.innerHTML='<input type="text" maxlength="120" placeholder="¿Qué te gustaría?" aria-label="Deseo"><input type="url" maxlength="600" placeholder="Link de Amazon (opcional)" aria-label="Link"><button type="button" class="x" aria-label="Quitar">×</button>';
+  row.innerHTML='<input type="text" maxlength="120" placeholder="¿Qué te gustaría?" aria-label="Deseo"><input type="url" maxlength="600" placeholder="Link de la tienda (opcional)" aria-label="Link"><button type="button" class="x" aria-label="Quitar">×</button>';
   row.children[0].value=t;row.children[1].value=u;$('#wishRows').appendChild(row);return row;
 }
 function setRows(l){$('#wishRows').innerHTML='';(l&&l.length?l:[{},{},{}]).forEach(w=>addRow(w.t||'',w.u||''))}
